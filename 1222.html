@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>孙展城1222JavaScript基础总结</title>
+	</head>
+	<body>
+		<h1>1222</h1>
+		<h2>ajax</h2>
+			<h2>总结ajax用到的主要代码</h2>
+			<p>先要 var  xhr = new XMLHttpRequest();</p>
+			<p>xhr.open("GET", "data.json");</p>
+			<p>xhr.send(null);</p>
+			<p>这是向服务器发送一个请求，有两种方法一种是get。一种是post。一般情况下用get</p>
+			<h2>xmlHttp.readyState的状态。有四种状态</h2>
+			<p>0（未初始化）还没有调用send()方法</p>
+   			<p>1（载入）已调用send()方法，正在发送请求</p>
+			<p>2（载入完成）send()方法执行完成，已经接收到全部响应内容</p>
+			<p>3（交互）正在解析响应内容</p>
+			<p>4 完成）响应内容解析完成，可以在客户端调用了</p>
+			<h2>xmlHttp.status的状态</h2>
+			<p>200 – 服务器成功返回网页 </p>
+     		<p>404 – 请求的网页不存在 </p>
+     		<p>503 – 服务不可用 </p>
+     		<p>当 readyState等于4且xmlHttp.status为 200 时，表示响应已就绪：</p>
+     		<h2>XHR响应</h2>
+       		<p>如需获得来自服务器的响应，请使用 XMLHttpRequest 对象的 responseText 或 responseXML 属性</p>
+      		 <p>responseText	获得字符串形式的响应数据。</p>
+     		  <p>responseXML	获得 XML 形式的响应数据。</p>
+	</body>
+</html>
