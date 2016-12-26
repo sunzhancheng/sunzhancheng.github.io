@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+
+	<body>
+		<h1>jquery</h1>
+		<h2>1.jquery介绍</h2>
+		<p>jquery是一个 Javascript函数库，是我们编程人员的工具箱，但要注意个个版本的兼容问题。</p>
+		<p>jQuery库包含以下特性</p>
+		<ul>
+			<li>HTML 元素选取</li>
+			<li>HTML 元素操作 </li>
+			<li>CSS 操作</li>
+			<li>HTML 事件函数</li>
+			<li>JavaScript 特效和动画</li>
+			<li>HTML DOM 遍历和修改 </li>
+			<li>AJAX </li>
+			<li>Utilities </li>
+
+		</ul>
+		<h2>2.jquery选择器</h2>
+		<p>选择器允许你对元素组或单个元素进行操作，他使用CSS选择器来选取HTML元素。</p>
+		<p>下面举几个常用的选择器：</p>
+		<p>id选择器：$(#id）,规定要选择元素的id,使用HTML元素的id属性。不要使用id作为命名！在某些浏览器中可能出问题。</p>
+		<p>class选择器：$(.class)，规定要选取的元素的 class。class 选择器使用 HTML 元素的 class 属性。不要使用数字开头的类名！在某些浏览器中可能出问题。</p>
+		<p>input选择器：$(":input")。input 选择器选取表单元素。该选择器同样适用于 button 元素。</p>
+		<p>click()选择器：$(selector).click().click选择器规定当发生点击事件时运行的函数</p>
+		<pre>$("button").click(function(){
+  $("p").slideToggle();
+  
+});
+       
+</pre>
+		<p>通用选择器：$("*")，　通用选择器（*）匹配所有元素，多用于结合上下文来搜索。</p>
+		<h2>3.jquery事件</h2>
+		<p>jquery事件函数：</p>
+		<p>jQuery 事件处理方法是 jQuery 中的核心函数。事件处理程序指的是当 HTML 中发生某些事件时所调用的方法。术语由事件“触发”（或“激发”）经常会被使用。通常会把 jQuery 代码放到
+
+			<head>部分的事件处理方法中：</p>
+		<p>一个简单的例子：</p>
+		<pre>
+$(document).ready(function(){
+  $("button").click(function(){
+    $("p").hide();
+               });
+});
+         </pre>
+		<p>当按钮点击事件触发时会调用会调用一个函数$("button").click(function() {... } )</p>
+		<p>jquery名称冲突：</p>
+	<p>jQuery 使用 $ 符号作为 jQuery 的简介方式。</p>
+	<p>某些其他 JavaScript 库中的函数（比如 Prototype）同样使用 $ 符号。</p>
+	<p>jQuery 使用名为 noConflict() 的方法来解决该问题。</p>
+	<p>var jq=jQuery.noConflict()，帮助您使用自己的名称（比如 jq）来代替 $ 符号。</p>
+	<ul>
+		<li>把所有 jQuery 代码置于事件处理函数中</li>
+		<li>把所有事件处理函数置于文档就绪事件处理器中</li>
+		<li>把 jQuery 代码置于单独的 .js 文件中</li>
+		<li>如果存在名称冲突，则重命名 jQuery 库</li>
+	</ul>
+
+	</body>
+
+</html>
