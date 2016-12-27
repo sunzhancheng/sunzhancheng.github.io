@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		<h1>jquery</h1>
+		<h2>jquery-DOM</h2>
+		<pre>
+html:用于设定HTML内容的值                                 jquery代码:$("#btn").html("Hello <b>world</b>!");
+text:用于设置元素内容的文本                                jquery代码:$("#btn").text("Hello world!");		
+val: 获取匹配元素的当前值                                  jquery代码:$("input").val("hello world!");
+attr: 属性名称，作为属性的植对象                            jquery代码：$("img").attr({ src: "test.jpg", alt: "Test Image" });
+removeAttr:删除属性名                                    jquery代码：$("img").removeAttr("src");
+append:向每个匹配的元素内部追加内容                          jquery代码:$("#btn").append("<b>Hello</b>");
+appendTo:把所有匹配的元素追加到另一个指定的元素元素集合中。      jquery代码:$("p").appendTo("div");
+after:在每个匹配的元素之后插入内容。                       jquery代码：$("p").after("<b>Hello</b>");
+insertAfter：把所有匹配的元素插入到另一个、指定的元素元素集合的后面。    jquery代码：$("p").insertAfter("#foo");
+remove：从DOM中删除所有匹配的元素。                 jquery代码:$("p").remove(".hello");
+		</pre>
+		<h2>动画效果</h2>
+		<pre>
+show：显示隐藏的匹配元素                                        jquery代码:$("p").show("slow");
+hide:隐藏显示的元素                                                 jquery代码：$("p").hide("slow");
+toggle:绑定两个或多个函数，以响应被选元素的轮流的click事件$("td").toggle(
+  function () {
+    $(this).addClass("selected");
+  },
+  function () {
+    $(this).removeClass("selected");
+  }
+);
+slideDown：通过高度变化（向下增大）来动态地显示所有匹配的元素，在显示完成后可选地触发一个回调函数。  
+$(".btn2").click(function(){
+  $("p").slideDown();
+});
+animate：用于创建自定义动画的函数                       
+$("#go").click(function(){
+  $("#block").animate({ 
+    width: "90%",
+    height: "100%", 
+    fontSize: "10em", 
+    borderWidth: 10
+  }, 1000 );
+});
+<h2>jquery-ajax</h2>
+
+
+
+		</pre>
+	</body>
+</html>
