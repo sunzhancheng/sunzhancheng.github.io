@@ -1,1 +1,173 @@
+AJAX实例 数据传输
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="lib/jquery-3.1.1.min.js"></script>
+    <style>
+        html,body{
+            margin: 0;
+            padding: 0;
+        }
+        #mask{
+            margin:0;
+            padding:0;
+            border:none;
+            width:100%;
+            height:100%;
+            background:#111;
+            opacity:0.6;
+            filter:alpha(opacity=30);
+            z-index:9999;
+            position:fixed;
+            top:0;
+            left:0;
+            display:none;
+        }
+        #info{
+            margin-left:auto;
+            margin-right:auto;
+            position:absolute;
+            background:white;
+            width:99%;
+            height:90%;
+            border:3px solid #444;
+            border-radius:7px;
+            z-index:10000;
+            display:none;
+            font-weight: bold;
+            font-size:20px;
+        }
+        .row1{
+            background:#f7f7f7;
+            padding:0px 20px;
+            line-height:50px;
+            height:50px;
+            font-weight:bold;
+            color:#666;
+            font-size:20px;
+            text-align: center;
+        }
+        label{
+            text-align: left;
+            display:inline-block;
+            width:230px;
+            height:40px;
+            border: 1px solid;
+            font-size:18px;
+        }
+        #info_homeAddress{
+            width:680px;
+        }
+        #info_majorMemo{
+            width: 600px;
+            height:50px;
+        }
+        #info_selfMemo{
+            width: 600px;
+            height:50px;
+        }
+        #content{
+            width:1000px;
+            position: absolute;
+            top:0px;
+            /*z-index: 999;*/
+        }
+    </style>
+</head>
+<body>
+
+<div id="info">
+    <div class="row1">
+        详细信息<a href="javascript:void(0)" title="关闭窗口" class="close_btn" id="closeBtn">×</a>
+   
+
+
+
+<div id="content">
+    姓名：<input type="text" id="username">
+    手机号：<input type="text" id="phoneNum">
+    学员名称：<input type="text" id="coName">
+    <button id="btn">点击</button>
+
+
+
+    <table id="tb" border="1">
+        <thead>
+        </thead>
+        <tbody id="tbd">
+
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<script>
+    $("#btn").click(function () {
+        var _url = "http://www.hemijiaoyu.com/service/searchApply";
+        var _data = {};
+        _data.pageNum = 1;
+        _data.pageSize = 20;
+
+        var $name = $("#username").val();
+        var $phNum = $("#phoneNum").val();
+        var $coName = $("#coName").val();
+        if($name != ""){
+            _data.name = $name;
+        }
+        if($phNum != ""){
+            _data.mobile = $phNum;
+        }
+        if($coName != ""){
+            _data.college = $coName;
+        }
+
+        $.ajax({
+            url:_url,
+            data:_data,
+            dataType:"JSON",
+            type:"GET",
+            cache:true,
+            success:function (msg) {
+                console.log(msg);
+                var _pNum = msg.pageNum;
+                var _pTol = msg.dataTotal;
+                var _dataTol = msg.pageTotal;
+
+                var arr1 = msg.list;
+                var str = "";
+                var l = arr1.length;
+                for(var i = 0;i<l;i++){
+                    var obj1 = arr1[i];
+                    str += "<tr id=" + i + ">";
+                    for(var j in obj1){
+                        str += "<td>" + obj1[j] + "</td>";
+                    }
+                    str += "</tr>";
+                }
+                $('#tbd').html(str);
+               $("tr").dblclick(function (e) {
+                   var _obj = arr1[e.currentTarget.id];
+                   $("#info_name").text(_obj.name);
+//                   console.log($("<div id='mask'></div>"));
+                   $("body").append("<div id='mask'></div>");
+                   //弹窗开始
+                   $("#mask").slideDown();
+                   $("#info").slideDown();
+               });
+            },error:function(error){
+                console.log("获取失败："+error);
+            }
+        });
+
+
+
+    });
+
+
+
 
