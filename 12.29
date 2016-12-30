@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		<h1>jquery表单提交完善</h1>
+		<h2>1.完整JS代码</h2>
+		<pre>
+			
+			var hidden = document.getElementById("hidden");
+			var year = hidden.getElementsByTagName("select")[0];
+			var mouth = hidden.getElementsByClassName("hidden-main")[0];
+			var birthday = document.getElementById("birthday");
+			for(var i = 2016; i
+				> 1950; i--) {
+				var newoption = document.createElement("option");
+				year.appendChild(newoption);
+				newoption.innerHTML = i;
+			}
+			<!--日期-->
+			for(var k = 1; k < 13; k++) {
+				var div = document.createElement("div");
+				div.innerHTML = k + "月";
+				mouth.appendChild(div);
+				div.birthday = k;
+				div.onclick = function() {
+
+					birthday.value = year.options[year.selectedIndex].text + "." + this.birthday;
+					hidden.style.display = "none";
+				}
+			}
+			birthday.onclick = function() {
+				hidden.style.display = "block";
+			}
+                 
+                 
+                 <!--提交判断-->
+			$("#btn").click(function() {
+				var reg = /^1[3|4|5|7|8][0-9]{9}$/
+
+				var flag = reg.test($("#phoneNum").val())
+				var faflag = reg.test($("#faphoneNum").val())
+				var moflag = reg.test($("#mophoneNum").val())
+				if($("#username").val().length < 2 || $("#username").val().length > 20) {
+					alert("请输入正确的姓名");
+					return false;
+				}
+
+				if(!flag) {
+					alert("手机号码格式错误");
+					return false;
+				}
+				if($("#fausername").val().length < 2 || $("#fausername").val().length > 20) {
+					alert("请输入正确的父亲姓名");
+					return false;
+				}
+
+				if(!faflag) {
+					alert("父亲电话格式错误");
+					return false;
+				}
+				if($("#mousername").val().length < 2 || $("#mousername").val().length > 20) {
+					alert("请输入正确的母亲姓名");
+					return false;
+				}
+				if(!moflag) {
+					alert("母亲电话格式错误");
+					return false;
+				}
+				if($("#ability").val().length > 200 || $("#self").val().length > 200 || $("#ability").val().length == 0 || $("#self").val().length == 0) {
+					alert("textnameerror");
+					return false;
+				}
+				var source;	
+				var obj = document.getElementsByClassName("sc");
+				for(var i = 0; i < obj.length; i++) {
+					if(obj[i].checked) {
+						source=obj[i].value;
+					}
+				}
+				<h2>数据接口</h2>
+				<pre>
+						var _data = {};
+
+			_data.name = $("#username").val();
+			_data.sex = $("#sex").val();
+			_data.birthday = $("#birthday").val() ;
+			_data.mobile = $("#phoneNum").val() ;
+			_data.political = $("#political").val() ;
+			_data.qq = $("#qq").val() ;
+			_data.college = $("#college").val() ;
+			_data.faculty = $("#faculty").val() ;
+			_data.major = $("#major").val() ;
+			_data.fatherName = $("#fausername").val() ;
+			_data.fatherMobile = $("#faphoneNum").val() ;
+			_data.matherName = $("#mousername").val() ;
+			_data.matherMobile = $("#mophoneNum").val() ;
+			_data.homeAddress = $("#homeAddress").val() ;
+			_data.source = source;
+			_data.majorMemo = $("#ability").val() ;
+			_data.selfMemo = $("#self").val();
+
+			$.ajax({
+				url: "http://www.hemijiaoyu.com/service/addApply",
+				type: "POST",
+				dataType: "JSON",
+				data: _data,
+				success: function(msg) {
+					console.log(msg)
+				},
+				error: function(error) {
+					console.log(error)
+				}
+			})
+
+			})
+				</pre>
+		</pre>
+	</body>
+</html>
