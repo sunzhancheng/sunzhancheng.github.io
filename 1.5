@@ -1,1 +1,106 @@
 
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		<h1>数据存储及CSS3动画</h1>
+		<h2>1.数据存储</h2>
+	
+	
+	<p>   cookie：Cookie 是在 HTTP 协议下，服务器或脚本可以维护客户工作站上信息的一种方式。Cookie 是由 Web 服务器保存在用户浏览器（客户端）上的小文本文件，它可以包含有关用户的信息。无论何时用户链接到服务器，Web 站点都可以访问 Cookie 信息  。  安全度很差</p>
+       <h2>2.CSS3动画</h2>
+       
+       <p>3D转换：rotateX()  rotateY(),通过 rotateX() rotateY() 方法，元素围绕其 X Y轴以给定的度数进行旋转</p>
+	   <p>transform属性：transform 属性向元素应用 2D 或 3D 转换。该属性允许我们对元素进行旋转、缩放、移动或倾斜。</p>
+	   
+	   <p>transform-origin:transform-origin 属性允许您改变被转换元素的位置。2D 转换元素能够改变元素 x 和 y 轴。3D 转换元素还能改变其 Z 轴。</p>
+	   <p>perspective:定义 3D 元素距视图的距离，以像素计。该属性允许您改变 3D 元素查看 3D 元素的视图。当为元素定义 perspective 属性时，其子元素会获得透视效果，而不是元素本身。</p>
+	   <h3>具体实例：设计一个旋转正六边形</h3>
+	   <pre>
+	   	
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body{
+				padding: 0;
+				margin: 0;
+			}
+			#cube{
+				margin: 100px auto;
+				width: 400px;
+				height: 400px;
+				position: relative;
+				transform: rotateX(200deg) rotateY(60deg) rotateZ(60deg);
+				transform-style: preserve-3d;
+		          animation: name 3s linear infinite;
+			}
+			#back,#front,#left,#right,#top,#bottom{
+				width: 400px;
+				height: 400px;
+				position: absolute;
+				font-size: 30px;
+				line-height: 400px;
+				text-align: center;
+				top:0;
+				left:0;
+			}
+			#left{
+				background: blue;
+				transform: rotateY(90deg) translateZ(-200px);
+			}
+			#right{
+				background: greenyellow;
+				transform: rotateY(90deg) translateZ(200px);
+			}
+			#top{
+				background: darkred;
+				transform: rotateX(90deg) translateZ(200px);	
+			}
+			#bottom{
+				background: palevioletred;
+				transform: rotateX(90deg) translateZ(-200px);	
+			}
+			#front{
+				background: purple;
+				transform:translateZ(200px);
+			}
+			#back{
+				background: fuchsia;
+				transform:translateZ(-200px);
+			}
+			@keyframes name{
+				from{
+					transform: rotatex(0deg)   rotatey(0deg)  rotatez(0deg);
+				}
+				to{
+					transform: rotatex(180deg)   rotatey(180deg)  rotatez(180deg);
+				}
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div id="cube">
+			<div id="front">前面</div>
+			<div id="back">后面</div>
+			<div id="left">左面</div>
+			<div id="right">右面</div>
+			<div id="top">上面</div>
+			<div id="bottom">下面</div>
+		</div>
+	</body>
+
+	   </pre>
+	
+	
+	
+	</body>
+	
+	
+</html>
